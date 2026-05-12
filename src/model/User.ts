@@ -16,7 +16,7 @@ const MessageSchema: Schema<Message> = new mongoose.Schema({//customise scema ha
     default: Date.now,
   },
 });
-
+//this is user interface
 export interface User extends Document {
   username: string;
   email: string;
