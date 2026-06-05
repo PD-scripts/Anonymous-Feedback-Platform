@@ -8,6 +8,10 @@ export const usernameValidation = z
   .max(20, 'Username must be no more than 20 characters')
   .regex(/^[a-zA-Z0-9_]+$/, 'Username must not contain special characters');// 0-9 a to z  A to Z  ke alawa kuc hn hi hona chaiye
 
+
+
+
+  
   //yaha per object banaay because hume 3-4le entitiy check krni hai ...upar vale me z.string kiya because single entity thi
 export const signUpSchema = z.object({
   username: usernameValidation,
