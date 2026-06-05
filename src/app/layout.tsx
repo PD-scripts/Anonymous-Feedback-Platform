@@ -7,8 +7,8 @@ import { Toaster } from '@/components/ui/toaster';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'True Feedback',
-  description: 'Real feedback from real people.',
+  title: 'Whispr — Anonymous Feedback Platform',
+  description: 'Receive honest, anonymous feedback from anyone. Create your profile, share your unique link, and get candid feedback from friends, teammates, or followers.',
 };
 
 interface RootLayoutProps {
