@@ -1,3 +1,19 @@
+//CODE FOR THE LOGIC OF SIGN UP API
+
+
+
+// IF existingUserByEmail EXISTS THEN
+//     IF existingUserByEmail.isVerified THEN
+//         success: false,
+//     ELSE
+//         // Save the updated user
+//     END IF
+// ELSE
+//     // Create a new user with the provided details
+//     // Save the new user
+// END IF
+
+
 import dbConnect from '@/lib/dbConnect';//db conection hr route me chalta hai because next edge me chalta hai
 import UserModel from '@/model/User';
 import bcrypt from 'bcryptjs';
@@ -24,7 +40,7 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
-
+ 
     const existingUserByEmail = await UserModel.findOne({ email });
     let verifyCode = Math.floor(100000 + Math.random() * 900000).toString();
 
@@ -44,11 +60,13 @@ export async function POST(request: Request) {
         existingUserByEmail.verifyCodeExpiry = new Date(Date.now() + 3600000);
         await existingUserByEmail.save();
       }
-    } else {
+    } else {//user by email nhi mila mtlb user pehli baar aya hai to hume usko create karna padega
       const hashedPassword = await bcrypt.hash(password, 10);
       const expiryDate = new Date();
       expiryDate.setHours(expiryDate.getHours() + 1);
 
+
+      //saving user in db
       const newUser = new UserModel({
         username,
         email,

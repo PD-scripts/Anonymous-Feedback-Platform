@@ -1,4 +1,4 @@
-import { resend } from "@/lib/resend";
+import { resend } from "@/lib/resend";//for api key 
 import VerificationEmail from "../../emails/VerificationEmail";//emial ki template ko import kiya hai , kyunki hume email bhejna hai to template ki jarurat padegi
 import { ApiResponse } from '@/types/ApiResponse';
 
@@ -8,8 +8,9 @@ export async function sendVerificationEmail(
   verifyCode: string
 ): Promise<ApiResponse> {
   try {
+    
     await resend.emails.send({
-      from: 'dev@hiteshchoudhary.com',
+      from: 'onboarding@resend.dev',
       to: email,
       subject: 'Mystery Message Verification Code',
       react: VerificationEmail({ username, otp: verifyCode }),//template se ui milega

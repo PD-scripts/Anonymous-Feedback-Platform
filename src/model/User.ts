@@ -69,6 +69,6 @@ const UserSchema: Schema<User> = new mongoose.Schema({
 
 const UserModel =
   (mongoose.models.User as mongoose.Model<User>) ||
-  mongoose.model<User>('User', UserSchema);//model ka data type User hai aur uska naam 'User' hai aur uska schema UserSchema hai, type script me bata padta hai hr baar ki kya type hai
+  mongoose.model<User>('User', UserSchema);//model ka data type User hai aur uska naam 'User' hai aur uska schema UserSchema hai, type script me batana padta hai hr baar ki kya type hai
 
 export default UserModel;
