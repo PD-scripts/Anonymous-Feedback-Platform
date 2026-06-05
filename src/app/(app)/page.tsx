@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { DeveloperWelcomePopup } from '@/components/DeveloperWelcomePopup';
+import { PhoneMockup } from '@/components/PhoneMockup';
 
 // Animation variants
 const containerVariants = {
@@ -54,46 +55,71 @@ function HeroSection() {
         />
       </div>
 
-      <div className="container mx-auto px-6 py-20 relative z-10">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-          className="max-w-4xl mx-auto text-center"
-        >
-          <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
-            Receive Honest Anonymous Messages.
-          </motion.h1>
-
-          <motion.p
-            variants={itemVariants}
-            className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed"
-          >
-            Create your profile, share your unique link, and receive honest, anonymous feedback from
-            friends, classmates, teammates, followers, or colleagues.
-          </motion.p>
-
-          <motion.div variants={itemVariants} className="flex gap-4 justify-center flex-wrap">
-            <Link href="/sign-up">
-              <Button className="px-8 py-3 bg-white text-black text-lg font-semibold hover:scale-105 transition">
-                Get Started
-              </Button>
-            </Link>
-            <a href="#how-it-works">
-              <Button variant="outline" className="px-8 py-3 text-lg font-semibold">
-                Learn How It Works
-              </Button>
-            </a>
-          </motion.div>
-
-          {/* Scroll indicator */}
+      <div className="container mx-auto px-6 py-12 md:py-20 relative z-10">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl mx-auto">
+          {/* Left: Phone Mockup - Hidden on mobile, shown on desktop */}
           <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="mt-12"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            className="hidden md:block"
           >
-            <ChevronDown className="w-8 h-8 mx-auto text-gray-400" />
+            <PhoneMockup />
           </motion.div>
+
+          {/* Right: Content */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
+            <motion.h1 
+              variants={itemVariants} 
+              className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6"
+            >
+              Receive Honest Anonymous Messages.
+            </motion.h1>
+
+            <motion.p
+              variants={itemVariants}
+              className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed"
+            >
+              Create your profile, share your unique link, and receive honest, anonymous feedback from
+              friends, classmates, teammates, followers, or colleagues.
+            </motion.p>
+
+            <motion.div variants={itemVariants} className="flex gap-4 flex-wrap mb-8">
+              <Link href="/sign-up">
+                <Button className="px-8 py-3 bg-white text-black text-lg font-semibold hover:scale-105 transition">
+                  Get Started
+                </Button>
+              </Link>
+              <a href="#how-it-works">
+                <Button variant="outline" className="px-8 py-3 text-lg font-semibold">
+                  Learn How It Works
+                </Button>
+              </a>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Mobile: Phone Mockup - Shown on mobile only */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="md:hidden mt-12 max-w-xs mx-auto"
+        >
+          <PhoneMockup />
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="mt-16 flex justify-center"
+        >
+          <ChevronDown className="w-8 h-8 text-gray-400" />
         </motion.div>
       </div>
     </section>
