@@ -72,10 +72,12 @@ export default function SignUpForm() {
 
       toast({
         title: 'Success',
-        description: response.data.message,
+        description:
+          response.data.message +
+          ' You can sign in now and verify later if you prefer.',
       });
 
-      router.replace(`/verify/${username}`);
+      router.replace('/sign-in');
 
       setIsSubmitting(false);
     } catch (error) {
