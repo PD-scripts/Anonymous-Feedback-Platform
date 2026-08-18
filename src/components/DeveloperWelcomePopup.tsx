@@ -8,13 +8,17 @@ export function DeveloperWelcomePopup() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const hasBeenShownThisSession = sessionStorage.getItem('whispr-welcome-shown-session');
     const hasVisited = localStorage.getItem('whispr-welcome-seen');
-    
-    if (!hasVisited) {
+    const params = new URLSearchParams(window.location.search);
+    const shouldForceShow = params.get('welcome') === '1' || params.get('showDeveloper') === '1';
+
+    if (shouldForceShow || (!hasVisited && !hasBeenShownThisSession)) {
       const timer = setTimeout(() => {
         setIsVisible(true);
+        sessionStorage.setItem('whispr-welcome-shown-session', 'true');
       }, 2500);
-      
+
       return () => clearTimeout(timer);
     }
   }, []);

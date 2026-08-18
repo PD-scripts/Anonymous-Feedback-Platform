@@ -5,7 +5,8 @@ export interface Message extends Document {//type script interface for message
   createdAt: Date;
 }
 
-const MessageSchema: Schema<Message> = new mongoose.Schema({//customise scema hai is liye hume type of scema define krna pada hai
+const MessageSchema: Schema<Message> = new mongoose.Schema({
+//customise scema hai is liye hume type of scema define krna pada hai
   content: {
     type: String,
     required: true,
@@ -15,6 +16,7 @@ const MessageSchema: Schema<Message> = new mongoose.Schema({//customise scema ha
     required: true,
     default: Date.now,
   },
+  
 });
 //this is user interface
 export interface User extends Document {

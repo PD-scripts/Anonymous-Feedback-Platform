@@ -57,7 +57,7 @@ export async function POST(request: Request) {
         const hashedPassword = await bcrypt.hash(password, 10);
         existingUserByEmail.password = hashedPassword;
         existingUserByEmail.verifyCode = verifyCode;
-        existingUserByEmail.verifyCodeExpiry = new Date(Date.now() + 3600000);
+        existingUserByEmail.verifyCodeExpiry = new Date(Date.now() + 3600000);//1 day
         await existingUserByEmail.save();
       }
     } else {//user by email nhi mila mtlb user pehli baar aya hai to hume usko create karna padega

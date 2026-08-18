@@ -6,7 +6,7 @@ type ConnectionObject = {
 
 const connection: ConnectionObject = {};
 
-async function dbConnect(): Promise<void> {// jo database se value return hogi uske liye promise k=use kiya hai and vid is liye because hume type ka lena dena nhi hai
+async function dbConnect(): Promise<void> {// jo database se value return hogi uske liye promise use kiya hai and viod is liye because hume type ka lena dena nhi hai
   // Check if we have a connection to the database or if it's currently connecting
   if (connection.isConnected) {
     console.log('Already connected to the database');
